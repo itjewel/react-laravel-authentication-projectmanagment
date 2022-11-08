@@ -1,0 +1,8 @@
+- Install JWT token in laravel  9:
+
+
+- React js
+npm install bootstrap
+     (import "bootstrap/dist/css/bootstrap.min.css")
+npm install axios
+npm install react-router-dom
