@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 import AuthUser from './AuthUser';
+import ProjectList from '../components/ProjectList';
+import { useNavigate } from "react-router-dom";
+import AddProject from '../components/AddProject'
 
 export default function Dashboard() {
     const {http} = AuthUser();
@@ -15,18 +18,26 @@ export default function Dashboard() {
         });
     }
 
+    let navigate = useNavigate(); 
+    const routeChange = () =>{ 
+        navigate('/add-project');
+    }
     function renderElement(){
         if(userdetail){
             return <div>
                 <h4>Hi-{userdetail.name}</h4>
                 {/* <h4>Email-{userdetail.email}</h4> */}
-                <h2>Project list Here</h2>
+                
+                <button className='btn btn-primary float-end' onClick={routeChange} >Add Project</button>
+                <ProjectList />
             </div>
         }else{
             return <p>Loading.....</p>
         }
 
     }
+
+   
 
     return(
         <div>

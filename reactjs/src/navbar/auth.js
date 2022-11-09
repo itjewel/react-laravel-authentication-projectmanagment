@@ -2,6 +2,8 @@ import { Routes, Route, Link } from 'react-router-dom';
 import Home from '../components/home';
 import Dashboard from '../components/dashboard';
 import AuthUser from '../components/AuthUser';
+import AddProject from '../components/AddProject'
+import ViewProject from '../components/ViewProject';
 function Auth() {
     const {token,logout} = AuthUser();
     const logoutUser = () => {
@@ -30,6 +32,9 @@ function Auth() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/add-project" element={<AddProject />} />
+                    <Route path="/project-details" element={<ViewProject />} />
+                    {/* <Route path="/AddProject" element={<AddProject />} /> */}
                 </Routes>
             </div>
         </>
