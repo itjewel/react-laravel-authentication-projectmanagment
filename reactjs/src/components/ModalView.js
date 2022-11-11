@@ -22,8 +22,7 @@ const customStyles = {
 };
 
 const ModalView = ({proId}) => {
-    let subtitle;
-  const navigate = useNavigate();
+  let subtitle;
   const {http} = AuthUser();
   const initialValues = {
     projectId: proId,

@@ -10,13 +10,25 @@ We will build a React application in that there is Login/Logout, Register, Home,
 
 # React js Laravel Auth:
     - Laravel 9
+    - Mysql
     - React js 17.0.2
-    - bootstrap
+    - bootstrap 5
     - react-router-domv6
     - axios
+    - Formik
+    - Yup
+    - dotenv
+    - react-data-table-component
+    - styled-components
+    - react-modal
+    - react-toastify
+
 
 
 ## Backend
+1. First clone project in your pc: 
+    Run ```git clone https://github.com/itjewel/react-laravel-authentication-projectmanagment.git``` 
+2. PHP Version needed above 8.0
 3. cd into the "Laravel" folder:
    Run ```cd Laravel``` 
 

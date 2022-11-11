@@ -4,9 +4,10 @@ export default function Home() {
     const [loading, setLoading] = useState(false);
     useEffect(()=>{
         const intervalId = setInterval(() => { 
-            setLoading(true);
+        setLoading(true);
         try {
-         const fetchdata =  fetch('http://35.201.2.209:8000/devices')
+        //    Random device/users show api after 5sec later 
+           fetch('http://35.201.2.209:8000/devices')
             .then(response => response.json())
             .then((data)=>{
                 setUserdata(data.devices)
