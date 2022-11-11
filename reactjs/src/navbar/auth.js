@@ -4,6 +4,7 @@ import Dashboard from '../components/dashboard';
 import AuthUser from '../components/AuthUser';
 import AddProject from '../components/AddProject'
 import ViewProject from '../components/ViewProject';
+import SearchData from '../components/SearchData';
 function Auth() {
     const {token,logout} = AuthUser();
     const logoutUser = () => {
@@ -34,6 +35,7 @@ function Auth() {
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/add-project" element={<AddProject />} />
                     <Route path="/project-details/:id" element={<ViewProject />} />
+                    <Route path="/search-data" element={<SearchData />} />
                 </Routes>
             </div>
         </>

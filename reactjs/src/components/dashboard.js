@@ -22,12 +22,16 @@ export default function Dashboard() {
     const routeChange = () =>{ 
         navigate('/add-project');
     }
+    const routeSearchData = () =>{ 
+        navigate('/search-data');
+    }
     function renderElement(){
         if(userdetail){
             return <div>
                 <h4>Hi-{userdetail.name}</h4>
                 {/* <h4>Email-{userdetail.email}</h4> */}
                 
+                <button className='btn btn-primary float-start' onClick={routeSearchData} >Without Datatable Search Table</button>
                 <button className='btn btn-primary float-end' onClick={routeChange} >Add Project</button>
                 <ProjectList />
             </div>

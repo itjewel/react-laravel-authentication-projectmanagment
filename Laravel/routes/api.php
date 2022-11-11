@@ -33,4 +33,7 @@ Route::group(['middleware'=>'api'],function(){
     Route::get('gettaskInfo/{id}', [ProjectController::class,'taskInformation']);
     Route::post('addproject', [ProjectController::class,'addProject']);
     Route::post('add-task', [ProjectController::class,'addTask']);
+    Route::post('assign-task', [ProjectController::class,'assignTask']);
+    Route::post('unassign-task', [ProjectController::class,'unAssignTask']);
+    Route::get('get-assign/{id}', [ProjectController::class,'getAssign']);
 });

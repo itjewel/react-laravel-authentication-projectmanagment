@@ -55,7 +55,7 @@ const columns = [
 
 
   return (
-    <DataTable title="Project list"  columns={columns} data={filteredProjects} 
+    <DataTable title="Datatable Project list"  columns={columns} data={filteredProjects} 
      pagination
      fixedHeader 
      fixedHeaderScrollHeight="450px" 

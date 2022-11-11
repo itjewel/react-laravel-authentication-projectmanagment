@@ -85,4 +85,51 @@ class ProjectController extends Controller
         }
     }
 
+    /**
+     * Insert the Task data insert.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function assignTask(Request $request){
+        $inputs = $request->all();
+        if($inputs){
+          $id =  DB::table('assign_project')->insertGetId($request->all());
+          $inputs['id'] = $id;
+            return response()->json(['message'=>'success!', 'data'=> $inputs], 201);
+           
+        }else{
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+    }
+
+    /**
+     * Insert the Task data insert.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function unAssignTask(Request $request){
+        $inputs = $request->all();
+        if($inputs){
+          DB::table('assign_project')->where(['userId'=>$inputs['userId'], 'projectId'=>$inputs['projectId']])->delete();
+            return response()->json(['message'=>'success!'], 201);
+           
+        }else{
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+    }
+
+    /**
+     * Get Project Project.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+
+    public function getAssign($id = null)
+    {        
+        $assignData = DB::table('assign_project')->select('userId')->where('projectId',$id)->get();
+        return $assignData->toJson();
+    }
+
+    
+
 }
