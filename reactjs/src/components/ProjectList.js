@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component';
 import { useNavigate } from "react-router-dom";
@@ -11,8 +10,8 @@ const [search, setSearch] = useState('');
 const [projects, setProjects] = useState([]);
 const [filteredProjects, setFilteredProjects] = useState([]);
 const navigate = useNavigate();
-const projectDetails = ()=>{
-    navigate('/project-details');
+const projectDetails = (id)=>{
+    navigate(`/project-details/${id}`);
 }
 const getprojectList = async () => {
     try {
@@ -49,7 +48,7 @@ const columns = [
     },
     {
     name: "Actions",
-    selector: row => <button className='btn btn-info' onClick={projectDetails}>Details</button>,
+    selector: row => <button className='btn btn-info' onClick={()=>projectDetails(row.id)}>Details</button>,
     },
    
 ] 

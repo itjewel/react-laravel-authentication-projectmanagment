@@ -33,7 +33,7 @@ function Auth() {
                     <Route path="/" element={<Home />} />
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/add-project" element={<AddProject />} />
-                    <Route path="/project-details" element={<ViewProject />} />
+                    <Route path="/project-details/:id" element={<ViewProject />} />
                 </Routes>
             </div>
         </>

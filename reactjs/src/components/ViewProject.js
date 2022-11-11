@@ -1,57 +1,67 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import ModalView from "../components/ModalView"
+import { Link, useParams} from 'react-router-dom';
+import AuthUser from '../components/AuthUser';
 
 const ViewProject = () => {
+  const { id } = useParams();
+  const {http} = AuthUser();
+const [projects, setProject] = useState([]);
+const [users, setUsers] = useState([]);
+
+
+const getprojectInformation = async (id) => {  
+  // console.log("Jewel",id);
+  try {
+      const response = await http.get(`/getprojectInfo/${id}`); 
+      setProject(response.data);
+
+      const users = await http.get(`/get-users`); 
+      setUsers(users.data);
+      // console.log(users)
+      
+  } catch (error) {
+      console.log(error)
+  }
+}
+
+useEffect(()=>{  
+  getprojectInformation(id);
+
+},[id])
+
   
   return (
     <div className="container text-center mt-5">
       <div className="row">
+       <Link to="/dashboard" className='float-end'>Project List</Link>
         <div className="col-5">
-          <h3>Title  One</h3>
-          <p>Project Description</p>
+          {projects && projects.map((project)=>{
+         return <div key={project.id}>
+          <h3>{project.title}</h3>
+          <p>{project.descriptions}</p>
+          </div>
+        })}
 
           <hr className="mt-5"/>
           <h6>Assign Project</h6>
           <div>
-          <div className='form-check'>
+
+          {users && users.map((user)=>{
+         return <div key={user.id}>
+         <div className='form-check float-start'>
             <div className="form-check form-check-inline">
               <input className="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio1" value="option1" />
-              <label className="form-check-label" for="inlineRadio1">Jewel Farazi</label>
+              <label className="form-check-label" htmlFor="inlineRadio1">{user.name}</label>
             </div>
           </div>
-          <div className='form-check'>
-          <div className="form-check form-check-inline">
-            <input className="form-check-input" type="checkbox" name="inlineRadioOptions" id="inlineRadio2" value="option2" />
-            <label className="form-check-label" for="inlineRadio2">Kamal Farazi</label>
           </div>
-          </div>
-
+        })}
           </div>
         </div>
         <div className="col">
-        <ModalView />
-            <table className="table table-sm">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Task Heading</th>
-                  <th scope="col">Details</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                </tr>
-               
-              </tbody>
-              </table>
+        <ModalView proId={id}/>
+            
         </div>
 
       </div>

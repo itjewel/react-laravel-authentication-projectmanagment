@@ -27,6 +27,10 @@ Route::group(['middleware'=>'api'],function(){
     Route::post('logout', [AuthController::class,'logout']);
     Route::post('refresh', [AuthController::class,'refresh']);
     Route::post('me', [AuthController::class,'me']);
+    Route::get('get-users', [AuthController::class,'getUsers']);
     Route::get('getproject', [ProjectController::class,'projectList']);
+    Route::get('getprojectInfo/{id}', [ProjectController::class,'projectInformation']);
+    Route::get('gettaskInfo/{id}', [ProjectController::class,'taskInformation']);
     Route::post('addproject', [ProjectController::class,'addProject']);
+    Route::post('add-task', [ProjectController::class,'addTask']);
 });

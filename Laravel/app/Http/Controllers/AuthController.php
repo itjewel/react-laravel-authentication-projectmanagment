@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 
@@ -53,6 +54,17 @@ class AuthController extends Controller
     public function me()
     {
         return response()->json(auth()->user());
+    }
+    
+    /**
+     * Get the  User List.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getUsers()
+    {
+        $reUsers = DB::table('users')->get();
+        return $reUsers->toJson();
     }
 
     /**
