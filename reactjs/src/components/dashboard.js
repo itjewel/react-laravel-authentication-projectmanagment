@@ -2,23 +2,27 @@ import { useEffect, useState } from 'react';
 import AuthUser from './AuthUser';
 import ProjectList from '../components/ProjectList';
 import { useNavigate } from "react-router-dom";
-import AddProject from '../components/AddProject'
 
 export default function Dashboard() {
-    const {http} = AuthUser();
+    let navigate = useNavigate(); 
+    const {http,logout} = AuthUser();
     const [userdetail,setUserdetail] = useState('');
 
     useEffect(()=>{
         fetchUserDetail();
     },[]);
 
-    const fetchUserDetail = () =>{
-        http.post('/me').then((res)=>{
-            setUserdetail(res.data);
-        });
+    // Check for authentication 
+    const fetchUserDetail = async () =>{
+        try {
+           await http.post('/me').then((res)=>{
+                setUserdetail(res.data);
+            }); 
+        } catch (error) {
+            logout();
+        }       
     }
 
-    let navigate = useNavigate(); 
     const routeChange = () =>{ 
         navigate('/add-project');
     }
@@ -27,9 +31,9 @@ export default function Dashboard() {
     }
     function renderElement(){
         if(userdetail){
-            return <div>
-                <h4>Hi-{userdetail.name}</h4>
-                {/* <h4>Email-{userdetail.email}</h4> */}
+            return <div className='mt-5'>
+                <h4 className='float-end'>Hi-{userdetail.name}</h4>
+                <div style={{"clear":"both"}}></div>
                 
                 <button className='btn btn-primary float-start' onClick={routeSearchData} >Without Datatable Search Table</button>
                 <button className='btn btn-primary float-end' onClick={routeChange} >Add Project</button>
@@ -38,10 +42,7 @@ export default function Dashboard() {
         }else{
             return <p>Loading.....</p>
         }
-
     }
-
-   
 
     return(
         <div>

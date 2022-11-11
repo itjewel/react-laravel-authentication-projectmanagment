@@ -13,24 +13,20 @@ const AddProject = () => {
   const initialValues = {
     title: '',
     descriptions: '',
-}
+  }
 const SignupSchema = Yup.object().shape({
   title: Yup.string().required("Please enter project title."),
   descriptions: Yup.string().required('Please enter project description')});
 
 const onSubmit =  async (data) =>{
   try {
-    const response = await http.post('/addproject',data);
-    toast.success("Project added success");
-     navigate('/dashboard')
-  
-  
-} catch (error) {
-  toast.error("Project added failed")
-    // console.log(error)
-}
-
-}
+      await http.post('/addproject',data);
+      toast.success("Project added success");
+      navigate('/dashboard');  
+    } catch (error) {
+      toast.error("Project added failed")
+    }
+  }
 
   return (<div className="col-8 offset-md-2">
          <Link to="/dashboard">Project List</Link>
@@ -58,14 +54,11 @@ const onSubmit =  async (data) =>{
               placeholder="Project Description" autoComplete="off"/>
               <div className='text-danger'> {errors.descriptions && touched.descriptions ? (
                   <div>{errors.descriptions}</div>
-              ) : null}</div>
-
-          
+              ) : null}</div>          
           </div>
           <button type="submit" className="btn btn-primary mt-4">Add Project</button>
       </Form>
-      )}
-     
+      )}     
       </Formik>
       <ToastContainer />
    </div>)

@@ -25,11 +25,10 @@ function Auth() {
                     <li className="nav-item">
                         <span role="button" className="nav-link" onClick={logoutUser}>Logout</span>
                     </li>
-
                 </ul>
-
             </nav>
             <div className="container">
+                {/* All are route here */}
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/dashboard" element={<Dashboard />} />

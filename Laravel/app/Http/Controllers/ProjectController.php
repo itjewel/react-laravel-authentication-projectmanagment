@@ -56,7 +56,7 @@ class ProjectController extends Controller
     }
 
     /**
-     * Insert the Project data insert.
+     * Insert the Project data.
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -69,7 +69,7 @@ class ProjectController extends Controller
         }
     }
      /**
-     * Insert the Task data insert.
+     * Insert the Task data.
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -86,7 +86,7 @@ class ProjectController extends Controller
     }
 
     /**
-     * Insert the Task data insert.
+     * Insert the Assign data.
      *
      * @return \Illuminate\Http\JsonResponse
      */
@@ -103,7 +103,7 @@ class ProjectController extends Controller
     }
 
     /**
-     * Insert the Task data insert.
+     * Delete the assign Data.
      *
      * @return \Illuminate\Http\JsonResponse
      */

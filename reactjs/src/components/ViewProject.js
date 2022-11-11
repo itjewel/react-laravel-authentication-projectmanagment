@@ -6,50 +6,45 @@ import AuthUser from '../components/AuthUser';
 const ViewProject = () => {
   const { id } = useParams();
   const {http} = AuthUser();
-const [projects, setProject] = useState([]);
-const [users, setUsers] = useState([]);
-const [assign, setAssign] = useState([]);
+  const [projects, setProject] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [assign, setAssign] = useState([]);
 
+  const getprojectInformation = async (id) => {  
+    try {
+      // get individual Project
+        const response = await http.get(`/getprojectInfo/${id}`); 
+        setProject(response.data);
 
-const getprojectInformation = async (id) => {  
-  // console.log("Jewel",id);
-  try {
-    // get individual Project
-      const response = await http.get(`/getprojectInfo/${id}`); 
-      setProject(response.data);
+        // get User list
+        const users = await http.get(`/get-users`); 
+        setUsers(users.data);
 
-      // get User Liste
-      const users = await http.get(`/get-users`); 
-      setUsers(users.data);
-
-       // get User Liste
-       const assignRes = await http.get(`/get-assign/${id}`); 
-       setAssign(assignRes.data);
-      //  console.log(assignRes)
-      
-  } catch (error) {
-      console.log(error)
+        // get assign project list
+        const assignRes = await http.get(`/get-assign/${id}`); 
+        setAssign(assignRes.data);
+        
+    } catch (error) {
+        console.log(error)
+    }
   }
-}
 
-useEffect(()=>{  
-  getprojectInformation(id);
-  // console.log(assign)
-},[id])
+  useEffect(()=>{  
+    getprojectInformation(id);
+  },[id])
 
-let assignHandeler = async (event) =>{
-  const userId = event.target.value;
-  // console.log('testt')
-  const data = {'userId': userId, 'projectId':id};
-  if (event.target.checked) {
-    const response = await http.post('/assign-task',data);
-    // console.log(response)
-  } else {
-    const responseUn = await http.post('/unassign-task',data);
-    // console.log('nothing')
+  // This method for assign 
+  let assignHandeler = async (event) =>{
+    const userId = event.target.value;
+    const data = {'userId': userId, 'projectId':id};
+    if (event.target.checked) {
+      // user assign project
+      await http.post('/assign-task',data);
+    } else {
+      // user unassign project
+      await http.post('/unassign-task',data);
+    }
   }
-}
-
 
   return (
     <div className="container text-center mt-5">
@@ -86,12 +81,11 @@ let assignHandeler = async (event) =>{
           </div>
         </div>
         <div className="col">
+          {/* Modal component view here  */}
         <ModalView proId={id}/>
             
         </div>
-
-      </div>
-      
+      </div>      
     </div>
   )
 }

@@ -11,13 +11,12 @@ const SearchData = () => {
     const projectDetails = (id)=>{
         navigate(`/project-details/${id}`);
     }
+    // Get Project List 
     const getprojectList = async () => {
         try {
-            const response = await http.get('/getproject');
-        
+            const response = await http.get('/getproject');        
             setProjects(response.data);
             setFilteredProjects(response.data);
-            // console.log(response.data);
         } catch (error) {
             console.log(error)
         }
@@ -26,6 +25,7 @@ const SearchData = () => {
     useEffect(()=>{
         getprojectList();
     },[])
+
     useEffect(()=>{
         const result = projects.filter((project)=>{
             return project.title.toLowerCase().match(search.toLowerCase());
@@ -41,7 +41,6 @@ const SearchData = () => {
                 value={search}
                 onChange={(e)=>setSearch(e.target.value)}
                 />
-
         </div>
          <table className="table table-sm">
               <thead>
@@ -60,8 +59,7 @@ const SearchData = () => {
                   <td>{project.descriptions}</td>
                   <td><button className='btn btn-info' onClick={()=>projectDetails(project.id)}>Details</button></td>
                 </tr>
-                })}
-               
+                })}               
               </tbody>
          </table>
     </div>

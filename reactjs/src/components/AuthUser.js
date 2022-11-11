@@ -18,8 +18,6 @@ export default function AuthUser(){
         return user_detail;
     }
 
-
-
     const [token,setToken] = useState(getToken());
     const [user,setUser] = useState(getUser());
 

@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 const customStyles = {
   content: {
-    top: '50%',
+    top: '40%',
     left: '50%',
     right: 'auto',
     bottom: 'auto',
@@ -45,9 +45,10 @@ const ModalView = ({proId}) => {
 
   const SignupSchema = Yup.object().shape({
     projectId:Yup.number(),
-    title: Yup.string().required("Please enter Task title."),
-    descriptions: Yup.string().required('Please enter Task description')});
+    title: Yup.string().required("Please enter task title."),
+    descriptions: Yup.string().required('Please enter task description')});
   
+  // form submit method 
   const onSubmit =  async (data) =>{
     try {
       const response = await http.post('/add-task',data);
@@ -55,14 +56,13 @@ const ModalView = ({proId}) => {
       toast.success("Task added success");     
       closeModal()    
     
-  } catch (error) {
-    toast.error("Task added failed")
-      // console.log(error)
-  }  
+    } catch (error) {
+      toast.error("Task added failed");
+    }  
   }
 
+  // Task information get 
   const getTaskInformation = async (id) => {  
-    // console.log("Jewel",id);
     try {
       const responseTask = await http.get(`/gettaskInfo/${id}`); 
       setTasks(responseTask.data);
@@ -73,8 +73,7 @@ const ModalView = ({proId}) => {
   }
   
   useEffect(()=>{  
-    getTaskInformation(proId);
-  
+    getTaskInformation(proId);  
   },[proId])
 
  
@@ -125,7 +124,8 @@ const ModalView = ({proId}) => {
             )}
           
             </Formik>
-      </Modal>
+          {/* Modal component view here */}
+         </Modal>
          <table className="table table-sm">
               <thead>
                 <tr>
