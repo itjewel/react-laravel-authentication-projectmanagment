@@ -60,6 +60,10 @@ Alternatively, run ```cp .env.example .env```
 
 15. Congratulations!!!
 
+![alt text](https://github.com/itjewel/react-laravel-authentication-projectmanagment/blob/master/login.png)
+
+
+
 
 
 
