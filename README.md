@@ -60,7 +60,36 @@ Alternatively, run ```cp .env.example .env```
 
 15. Congratulations!!!
 
-![alt text](https://github.com/itjewel/react-laravel-authentication-projectmanagment/blob/master/login.png)
+## Featues
+16. Login Form
+![alt text](https://github.com/itjewel/react-laravel-authentication-projectmanagment/blob/master/features-images/login-page.png)
+
+17. Registration Form
+![alt text](https://github.com/itjewel/react-laravel-authentication-projectmanagment/blob/master/features-images/register-page.png)
+
+18. Home Page 
+![alt text](https://github.com/itjewel/react-laravel-authentication-projectmanagment/blob/master/features-images/home-page.png)
+
+19. Project Added Form 
+![alt text](https://github.com/itjewel/react-laravel-authentication-projectmanagment/blob/master/features-images/project-add.png)
+
+20. Project View and datatable use in dashboard page 
+![alt text](https://github.com/itjewel/react-laravel-authentication-projectmanagment/blob/master/features-images/dashboard-datatable-searching.png)
+
+
+21. Project details, project assign, task list show page 
+![alt text](https://github.com/itjewel/react-laravel-authentication-projectmanagment/blob/master/features-images/project-details-assign-task-add.png)
+
+22. Task added page 
+![alt text](https://github.com/itjewel/react-laravel-authentication-projectmanagment/blob/master/features-images/task-add.png)
+
+23. Project Searching without datatable 
+![alt text](https://github.com/itjewel/react-laravel-authentication-projectmanagment/blob/master/features-images/searching-without-datatable.png)
+
+
+
+
+
 
 
 
